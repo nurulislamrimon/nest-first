@@ -10,7 +10,7 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ParamDto } from './dto/param.dto';
+import { ParseIdPipe } from './pipes/parseIdPipe';
 
 @Controller('user')
 export class UserController {
@@ -32,7 +32,7 @@ export class UserController {
   }
 
   @Patch(':id')
-  update(@Param() { id }: ParamDto, @Body() updateUserDto: UpdateUserDto) {
+  update(@Param('id', ParseIdPipe) id, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update({ id: String(id) }, updateUserDto);
   }
 
