@@ -10,5 +10,5 @@ export const dbConfig: MysqlConnectionOptions = {
   password: 'Nurul123',
   database: 'nestjs',
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  synchronize: process.env.NODE_ENV === 'development',
+  synchronize: true, // never use TRUE in production!
 };
