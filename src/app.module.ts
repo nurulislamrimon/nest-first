@@ -6,10 +6,19 @@ import { HeaderModule } from './header/header.module';
 import { CustomDecoratorModule } from './custom-decorator/custom-decorator.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dbConfig } from 'dbConfig';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(dbConfig),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => dbConfig(configService),
+    }),
     UserModule,
     HeaderModule,
     CustomDecoratorModule,
