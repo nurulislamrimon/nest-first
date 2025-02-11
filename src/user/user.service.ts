@@ -18,16 +18,14 @@ export class UserService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return this.userRepo.findOneBy({ id });
   }
 
   update(query: Record<string, string>, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${JSON.stringify(query)} user ${JSON.stringify(
-      updateUserDto,
-    )}`;
+    return this.userRepo.update(query, updateUserDto);
   }
 
   remove(query: Record<string, string>) {
-    return `This action removes a #${JSON.stringify(query)} user`;
+    return this.userRepo.delete(query);
   }
 }
