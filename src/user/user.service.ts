@@ -14,7 +14,11 @@ export class UserService {
   }
 
   findAll() {
-    return `This action returns all user`;
+    return this.userRepo.find({
+      where: {
+        // name: 'Nurul',
+      },
+    });
   }
 
   findOne(id: number) {

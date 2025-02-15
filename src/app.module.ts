@@ -7,6 +7,8 @@ import { CustomDecoratorModule } from './custom-decorator/custom-decorator.modul
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dbConfig } from 'dbConfig';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { PropertyModule } from './property/property.module';
+import { PropertyFeatureModule } from './property-feature/property-feature.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     UserModule,
     HeaderModule,
     CustomDecoratorModule,
+    PropertyModule,
+    PropertyFeatureModule,
   ],
   controllers: [AppController],
   providers: [AppService],
